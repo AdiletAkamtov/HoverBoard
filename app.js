@@ -1,18 +1,41 @@
+document.addEventListener("DOMContentLoaded", () => {
+    for (let i = 0; i < SQUARES_NUMBER; i++ ){
+        const square = document.createElement('div')
+        square.classList.add('square')
+    
+        square.addEventListener('mouseover', () => {
+            setColor(square)
+            PlaySound('mySound')
+        })
+    
+        square.addEventListener('mouseleave', () => {
+            removeColor(square)
+            StopSound('mySound')
+        })
+    
+        board.append(square)
+    }
+
+    function PlaySound(soundobj) {
+        const thissound=document.getElementById(soundobj);
+        thissound.play();
+    }
+    
+    function StopSound(soundobj) {
+        const thissound=document.getElementById(soundobj);
+        thissound.pause();
+        thissound.currentTime = 0;
+    }
+
+});
+
 const board = document.querySelector('#board')
 
 const colors = ['#00FFFF','#F0F8FF','#FAEBD7','#000000','#FAEBD7','#DC143C','#7FFF00','#00FFFF','#8B008B','#FF1493']
 const SQUARES_NUMBER = 357
 
-for (let i = 0; i < SQUARES_NUMBER; i++ ){
-    const square = document.createElement('div')
-    square.classList.add('square')
 
-    square.addEventListener('mouseover', () => setColor(square))
 
-    square.addEventListener('mouseleave', () => removeColor(square))
-
-    board.append(square)
-}
 function setColor(element){
     const color = getRandomColor()
     element.style.backgroundColor = color
@@ -32,13 +55,5 @@ function getRandomColor() {
    return colors[index]
 }
 
-function PlaySound(soundobj) {
-    var thissound=document.getElementById(soundobj);
-    thissound.play();
-}
+//_________________________________
 
-function StopSound(soundobj) {
-    var thissound=document.getElementById(soundobj);
-    thissound.pause();
-    thissound.currentTime = 0;
-}

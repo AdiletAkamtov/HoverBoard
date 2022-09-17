@@ -3,13 +3,13 @@
 }
 
 body {
-  
   display: flex;
   background-color: #111;
   justify-content: center;
   height: 100vh;
   overflow: hidden;
   margin-top: 100px;
+  flex-direction: row;
 }
 .container {
   display: flex;
@@ -31,4 +31,10 @@ body {
 }
 .square:hover{
   transition-duration: 0s;
+}
+.btnClick{
+  width: 200px;
+  height: 40px;
+  background-color: #fff;
+  color:#000;
 }
